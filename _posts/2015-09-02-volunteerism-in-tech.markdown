@@ -4,7 +4,7 @@ layout: post
 <!-- <img src="{{ site.baseurl }}/images/railsbridge.jpg"> -->
 To me, volunteering and giving back within the development field is something that is
 incredibly important. I spend a lot of my personal time volunteering at local events, offering to help
-any other coder newbies I know who may need it, and searching out new opportunities for ways
+any other coder newbies I know who may need it, and seeking out new opportunities for ways
 I could volunteer more.
 
 I've been asked by a couple of friends why it's so important to me to do these things and really for me
