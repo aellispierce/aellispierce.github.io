@@ -34,7 +34,7 @@ in. There were both technical and non-technical sessions and in all of them the
 moderators did a great job of ensuring that no-one dominated the conversation. We all got
 the opportunity to speak our mind and express our ideas.
 
-The nights were dominated by making new friends over boardgames and Werewolf, a game
+The nights were dominated by making new friends over board games and Werewolf, a game
 I had never played before and now want to play constantly. Due to my quiet and unassuming
 nature I even managed to escape attention and win as a Werewolf my second time playing!
 
