@@ -10,3 +10,4 @@ github_username:  anellis
 
 # Build settings
 markdown: kramdown
+highlighter: pygments
