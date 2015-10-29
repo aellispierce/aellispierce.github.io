@@ -63,7 +63,7 @@ and see if there's a way to change that. You need those books!!
 
 __
 
-Those are my main pieces of advice. One more thing I'd suggest is, if possibly, try
+Those are my main pieces of advice. One more thing I'd suggest is, if possible, try
 to find somewhere where you won't be the only junior developer. This kind of goes
 along with asking for help, but it has been a bit rough for me to get used to being
 the only junior developer and the first junior developer the company
