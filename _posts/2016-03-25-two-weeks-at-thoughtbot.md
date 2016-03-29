@@ -41,3 +41,6 @@ our internal messaging tools in just vanilla javascript. I was able to connect
 to the API and get an initial index and show page out pretty quickly. I was
 pretty proud to be learning a programming language that was fairly new to me and
 getting so much done so quickly. From there, I went on and created the Dummy library.
+
+As I said, thus far it's been a great experience and I can't wait to see what's
+in store as I continue.
