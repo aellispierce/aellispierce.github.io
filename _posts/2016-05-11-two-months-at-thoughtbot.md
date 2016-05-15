@@ -32,7 +32,7 @@ actually able to make a call out to the API.
 However, the bright side is that to handle all of these calls, they use a lot
 of test doubles, which are things that I hadn't had that much experience with.
 So, I got to learn a lot of interesting testing things on the project. The four
-different types of test doubles are stubs, mocks, spies and fakes, were all
+different types of test doubles, stubs, mocks, spies and fakes, were all
 present in their code base so I got good practice seeing when one type is
 appropriate to use over the other. Overall it was a good experience and a good
 client project to work on.
