@@ -29,13 +29,14 @@ to do.
   end
 {% endhighlight %}
 <br>
-If we wanted to dynamically define these methods instead of doing each
-one individually we could instead do:
+Obviously this is a pretty contrived example, but stay with me. If we wanted to
+dynamically define these methods instead of doing each one individually we could
+instead do:
 
 {% highlight ruby  %}
 ["dog", "dishes", "car"].each do |method|
   define_method "wash_#{method}" do
-    self.clean(method)
+    clean(method)
   end
 end
 

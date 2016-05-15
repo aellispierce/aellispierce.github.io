@@ -13,7 +13,7 @@ it’s doing, _really_.
 
 The thing is, the truth is even crazier than the metaphor. What it’s doing is
 sending little signals over wires and flipping circuits on and off. Computer programming
-is some how simultaneously the most real and logical activity and yet complete and
+is somehow simultaneously the most real and logical activity and yet complete and
 utter madness. The entire industry is built on clever metaphors and abstractions.
 Nothing is actually what you describe it as, it’s just a series of stories we
 tell to “simplify” things. Sometimes we think of people who can’t understand these
