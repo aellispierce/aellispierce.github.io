@@ -1,5 +1,6 @@
 ---
 layout: post
+title: White House LGBT in Tech Briefing
 ---
 
 Last week I had the privilege to attend the White House LGBT in Tech
@@ -12,8 +13,7 @@ that I will never forget. I am humbled and honored to have been a part of it.
 
 The day started off with an introduction from Raffi Freedman-Gursman, the White
 House LGBT Liason, followed by Megan Smith, White House Chief Technology
-Officer and Leanne Pittsford, organizer of Lesbians Who Tech and the woman we
-have to thank for organizing this fabulous event.
+Officer. Then we heard from Leanne Pittsford, organizer of Lesbians Who Tech and the woman we have to thank for organizing this fabulous event.
 
 Raffi gave us a great overview of some of the things the administration has
 already done and what they're continuing to work on for the LGBT community while
@@ -34,14 +34,20 @@ live stream, however it went well and afterward I was glad I did. Introducing
 myself and talking about my work at RailsBridge and thoughtbot opened the door
 to meeting some great people more easily.
 
-After Asks and Offers, leaders of different white house initiatives, such as the
+After Asks and Offers, leaders of different White House initiatives, such as the
 Initiative for Women and Girls, Criminal Justice Reform, the Environment, etc
 all came up and talked to us about their initiatives and what problems they were
-trying to solve and we split up into small groups to continue
+trying to solve. We then split up into small groups focused on these
+different areas to continue
 that conversation and brainstorm about how we can help solve these problems with
 technology.
 
-I participated in the Criminal Justice Reform talk and I was really impressed
+I participated in the Criminal Justice Reform group and I was really impressed
 with the level of conversation and what we accomplished in such a short amount
 of time. I'm very excited to continue the conversation and help organize the
 Criminal Justice Reform track for the conference in November.
+
+Later in the afternoon we had a tour of the White House and then closed out and
+celebrated during the after party. Over all it was an
+absolutely fantastic event and I met some amazing people there. I can't wait to
+get back together in November and continue this work.
