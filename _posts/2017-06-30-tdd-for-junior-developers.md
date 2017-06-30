@@ -1,8 +1,9 @@
 ---
 layout: post
+title: TDD for Junior Developers
 ---
 
-When I went through code school, we only covered testing very briefly. We went
+When I went through a coding bootcamp, we only covered testing very briefly. We went
 over it as part of the lesson one day, were required to use it in one or two
 homework assignments, and then after that we never spoke much about it again and
 using it on any project was always optional.
@@ -10,14 +11,17 @@ using it on any project was always optional.
 From what I've seen, my experience was fairly typical. While most training
 programs for junior developers cover testing, very few go in depth or require
 TDD as a part of their workflow throughout the course. I understand the urge to
-not focus on it by teachers. It is another thing for students to learn in a
-schedule that's usually already jammed packed, and it's a tool that not every
-company uses.
+not focus on it by teachers. It's just another thing for students to learn in a
+schedule that's already jam packed, and it's a tool that not every company
+uses.
 
 I however think TDD is one of the most effective ways to teach new programmers
-some of the most important parts of the trade. Mainly, breaking down your
-problem into small, manageable chunks and learning to decipher error messages
-effectively.
+some of the most important parts of the trade. Two of the biggest benefits are
+learning to break down problems into small, manageable chunks and learning
+to decipher error messages effectively.
+
+
+### Breaking down the problem
 
 By far the most common thing I see cripple new developers when they go to work
 on a project is simply being overwhelmed. They have a whole series of technical
@@ -30,7 +34,7 @@ through successfully.
 
 Writing tests, especially with an "outside-in" method where you focus on writing
 feature tests for what the user will be experiencing, forces junior
-developers to focus there efforts. It creates a strict set of guidelines. You
+developers to focus their efforts. It creates a strict set of guidelines. You
 can't move on to anything else until the test you have in front of you is green.
 
 Additionally, once they've gotten used to it in can really help to break down a
@@ -39,31 +43,34 @@ through a scenario, and then you can work backwards to figure out what steps you
 need to make that happen. It serves the same purpose as writing an outline
 before you start on a paper.
 
+
+### Deciphering error messages
+
 The second reason that I think testing is extremely helpful is that it forces
 you to learn to decipher error messages. Obviously, with or without tests junior
 developers are going to see a lot of error messages and exceptions. Typically,
-new programmers struggle a lot with these. Often they don't read them at all,
-seeing that they've gotten an error they immediately go back to the last line of
+new programmers struggle a lot with these. Often they don't read them at all.
+Seeing that they've gotten an error, they immediately go back to the last line of
 code they wrote and start playing with it to see if they can get the error to go
 away. They are intimidated by the wall of text that comes with an error and
 don't know how to siphon out the important bits.
 
 Without tests, users are typically working in the browser. They see the rails
 exceptions when there is a large problem but they don't get the practice on more
-mundane things. With tests, if you have a typo in text that you expect page to
-have your test will fail. These small errors can be a big help in learning the
-important things to pay attention to, like line number, when deciphering an
-error message and can give much more practice then when you're just seeing
+mundane things. With tests, if you have a typo in your text your test will fail.
+These small errors can be a big help in learning the important things to pay
+attention to, like line number, when deciphering an
+error message and can give much more practice than when you're just seeing
 occasional exceptions in the browser.
 
 There are other benefits I see from learning testing too. Like, for example,
 most other junior developers just aren't as familiar with TDD, so learning it
-yourself can give you a competitive advantage in job search and show that you
+yourself can give you a competitive advantage in the job search and show that you
 care about your code quality. Additionally, junior developers should ideally be
 looking for companies that test their code thoroughly, since that provides
 juniors a safety net when they're joining and nervous about making their first
-changes to production code. Having experience with testing will help these types
-of high quality companies find the candidate.
+changes to production code. Having experience with testing will help attract
+these types of high quality companies
 
 Many people think testing is too advanced for junior developers. I however think
 it was essential to my own development and one of the things that helped me
