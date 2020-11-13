@@ -1,5 +1,6 @@
 ---
 layout: post
+published: false
 ---
 
 At the last Triangle Ruby meetup the scheduled speaker had to cancel because of

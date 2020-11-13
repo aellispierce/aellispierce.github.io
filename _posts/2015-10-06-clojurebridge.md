@@ -1,6 +1,7 @@
 ---
 title: ClojureBridge
 layout: post
+published: false
 ---
 Last weekend I had the pleasure of going to ClojureBridge, a weekend "Intro to Clojure"
 course put on by Cognitect, the company that made Clojure, here in Durham.
@@ -32,7 +33,7 @@ wrapping my head around reading a line from innermost parens to outermost, inste
 left to right. However, I think stretching my mind in this way is probably a good thing
 and I'm kind of tempted to stick with it just because it feels so unnatural. At the very
 least I think it's good idea to spend some time working in a language where the code itself is
-just data.  
+just data.
 
 Overall, with my forays into functional land I thus far like Elixir much more than Clojure,
 but I also think that's because it feels more natural for me with it's syntax being so similar to Ruby,

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Two Weeks At thoughtbot
+published: false
 ---
 
 I just finished the end of week two of my apprenticeship at thoughtbot and thus
