@@ -1,0 +1,57 @@
+I"�<p>At work recently I’ve been creating the JSON API of our main application, <a href="https://spreedly.com/">Spreedly Core</a>
+and during this time I’ve had a lot of opportunity to try out different testing methods
+and start to understand a lot more about the inner workings of both Rspec and Minitest.
+One of the interesting things I learned about were Minitest custom assertions.</p>
+
+<p>A custom assertion is exactly what it sounds like, an opportunity to make your own
+Minitest assertion if the standard things like  <code class="language-plaintext highlighter-rouge">assert_equal</code> aren’t doing it for you.</p>
+
+<p>The first thing you’ll need to do is to create a <code class="language-plaintext highlighter-rouge">test/custom_assertions.rb</code> file where you’ll
+crack open the built in module Minitest::Assertions.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#custom_assertions.rb</span>
+<span class="nb">require</span> <span class="s1">'minitest/assertions'</span>
+
+<span class="k">module</span> <span class="nn">Minitest::Assertions</span>
+
+<span class="k">end</span></code></pre></figure>
+
+<p><br />
+Then, in the test file that you’re working in or your <code class="language-plaintext highlighter-rouge">test_helper.rb</code> you can require
+your custom_assertions file. From there, making new assertions is easy.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#custom_assertions.rb</span>
+<span class="nb">require</span> <span class="s1">'minitest/assertions'</span>
+
+<span class="k">module</span> <span class="nn">Minitest::Assertions</span>
+
+  <span class="k">def</span> <span class="nf">assert_shows_access_denied</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+      <span class="n">result</span> <span class="o">=</span> <span class="n">json_response</span><span class="p">[</span><span class="s1">'errors'</span><span class="p">].</span><span class="nf">collect</span> <span class="k">do</span> <span class="o">|</span><span class="n">error</span><span class="o">|</span>
+        <span class="n">error</span><span class="p">[</span><span class="s1">'key'</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"errors.access_denied"</span> <span class="o">&amp;&amp;</span> <span class="n">error</span><span class="p">[</span><span class="s1">'message'</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Unable to authenticate using the given environment_key and access_token.  Please check your credentials."</span>
+      <span class="k">end</span><span class="p">.</span><span class="nf">all?</span> <span class="o">&amp;&amp;</span> <span class="n">response</span><span class="p">.</span><span class="nf">status</span> <span class="o">==</span> <span class="mi">401</span>
+    <span class="n">assert</span> <span class="n">result</span>
+  <span class="k">end</span>
+
+<span class="k">end</span></code></pre></figure>
+
+<p><br />
+One other nice trick is that you can pass in a custom message to be sent back on failure.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#custom_assertions.rb</span>
+<span class="nb">require</span> <span class="s1">'minitest/assertions'</span>
+
+<span class="k">module</span> <span class="nn">Minitest::Assertions</span>
+
+  <span class="k">def</span> <span class="nf">assert_shows_access_denied</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">json_response</span><span class="p">[</span><span class="s1">'errors'</span><span class="p">].</span><span class="nf">collect</span> <span class="k">do</span> <span class="o">|</span><span class="n">error</span><span class="o">|</span>
+      <span class="n">error</span><span class="p">[</span><span class="s1">'key'</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"errors.access_denied"</span> <span class="o">&amp;&amp;</span> <span class="n">error</span><span class="p">[</span><span class="s1">'message'</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Unable to authenticate using the given environment_key and access_token.  Please check your credentials."</span>
+    <span class="k">end</span><span class="p">.</span><span class="nf">all?</span> <span class="o">&amp;&amp;</span> <span class="n">response</span><span class="p">.</span><span class="nf">status</span> <span class="o">==</span> <span class="mi">401</span>
+    <span class="n">assert</span> <span class="n">result</span><span class="p">,</span>
+      <span class="s2">"Expected the response to show access denied (401).  Actual response code: </span><span class="si">#{</span><span class="n">response</span><span class="p">.</span><span class="nf">code</span><span class="si">}</span><span class="s2">.  Actual body:</span><span class="se">\n</span><span class="s2"> </span><span class="si">#{</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">end</span>
+
+<span class="k">end</span></code></pre></figure>
+
+<p><br />
+And that’s basically it! Simple and straightforward.</p>
+:ET

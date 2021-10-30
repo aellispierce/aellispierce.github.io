@@ -4,9 +4,21 @@ layout: default
 
 <section id="one" >
     <div class="container">
-      <header class="major">
-        <h2>Hi, I'm Ashley</h2>
-      </header>
+        {% for post in site.posts limit:1 %}
+            <article>
+                <header>
+                    <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+                </header>
+                <section class="post-content">
+                    {{ post.excerpt }}
+                </section>
+                <section class="special">
+                    <ul class="actions">
+                        <li><a href="{{ site.baseurl }}{{ post.url }}" class="button special">Read More</a></li>
+                    </ul>
+                </section>
+            </article>
+        {% endfor %}
     </div>
 </section>
 <section>

@@ -1,0 +1,92 @@
+I"#<p>There are a lot of ways that you can optimize performance in your queries by
+making sure to use SQL and ActiveRecord wherever possible instead of using ruby
+or rails methods to do what you’re looking for.</p>
+
+<p>One example is an app I was working on where users complete challenges to win
+rewards. I wanted to see how many different challenges users have unlocked the rewards for. My first attempt was this:</p>
+
+<p><code class="language-plaintext highlighter-rouge">RewardLevel.where(unlocked: true).pluck(:pursuit_id).uniq.count</code></p>
+
+<p>However afterwards I learned I could do this instead:
+<code class="language-plaintext highlighter-rouge">RewardLevel.where(unlocked: true).distinct(:pursuit_id).count(:pursuit_id)</code>
+This replaces Ruby’s <code class="language-plaintext highlighter-rouge">uniq</code> method with the active record <code class="language-plaintext highlighter-rouge">distinct</code> call, that
+way SQL can do the work of eliminating duplicates. Then, I can also the
+ActiveRecord <code class="language-plaintext highlighter-rouge">count</code> method to count the records in a certain colum, instead of
+the ruby count. This keeps all of the work in SQL and does one database query
+that returns exactly what I need.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">def</span> <span class="nf">current_pursuit_participation</span>
+    <span class="n">pursuit_participations</span><span class="p">.</span><span class="nf">select</span> <span class="k">do</span> <span class="o">|</span><span class="n">participation</span><span class="o">|</span>
+      <span class="n">participation</span><span class="p">.</span><span class="nf">active?</span>
+    <span class="k">end</span><span class="p">.</span><span class="nf">first</span>
+  <span class="k">end</span>
+
+<span class="no">Instead</span> <span class="n">we</span> <span class="n">can</span> <span class="k">do</span> <span class="n">this</span>
+
+<span class="sb">```ruby
+  def current_pursuit_participation
+    pursuit_participations.where(id: Pursuit.active)
+  end
+</span></code></pre></div></div>
+
+<p>This avoids loading up all of the participations into memory and instead keeps
+the work in SQL.</p>
+
+<p>Scopes</p>
+
+<p>Whenever possible, it’s nice to have methods that return an active record
+relation, that way things can be chainable and you can keep queries in sql. This
+is called a scope.</p>
+
+<p>I wanted to see if there were any active pursuits
+<code class="language-plaintext highlighter-rouge">Pursuit.any?(&amp;:active)</code> Originally, active was a method that returned the currently active pursuit. So, this <code class="language-plaintext highlighter-rouge">any_active</code> loads all of the pursuits in memory and loops through each one to see if it’s active. By changing <code class="language-plaintext highlighter-rouge">active</code> to return an active record relation we can do this</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">any_active?</span>
+    <span class="no">Pursuit</span><span class="p">.</span><span class="nf">active</span><span class="p">.</span><span class="nf">any?</span>
+  <span class="k">end</span>
+</code></pre></div></div>
+
+<p>This means the database can do all of the work, which is much more efficient and
+avoids an n+1 query.</p>
+
+<p>Then I wanted to see the number of finishers</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pursuit</span><span class="p">.</span><span class="nf">pursuit_participations</span><span class="p">.</span><span class="nf">select</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:finished</span><span class="p">).</span><span class="nf">count</span>
+</code></pre></div></div>
+
+<p>The problem with this is again that it loads all of the participations into
+memory to then count how many are finished.</p>
+
+<p>Instead I started by adding a scope on the <code class="language-plaintext highlighter-rouge">PursuitParticipation</code> class</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="k">class</span> <span class="nc">PursuitParticipation</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+    <span class="n">belongs_to</span> <span class="ss">:user</span>
+    <span class="n">belongs_to</span> <span class="ss">:pursuit</span>
+    <span class="n">scope</span> <span class="ss">:finished</span><span class="p">,</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="n">where</span><span class="p">(</span><span class="ss">finished: </span><span class="kp">true</span><span class="p">)</span> <span class="p">}</span>
+  <span class="k">end</span>
+</code></pre></div></div>
+
+<p>Then I could have SQL do the work for me</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">pursuit</span><span class="p">.</span><span class="nf">pursuit_participations</span><span class="p">.</span><span class="nf">finished</span><span class="p">.</span><span class="nf">count</span>
+</code></pre></div></div>
+
+<p>One other really good and easy thing you can do is add an index on all your
+foreign keys. This can be done pretty easily. Instead of</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">create_table</span> <span class="ss">:posts</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+  <span class="n">t</span><span class="p">.</span><span class="nf">integer</span> <span class="ss">:user_id</span><span class="p">,</span> <span class="ss">null: </span><span class="kp">false</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>We can just do</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">create_table</span> <span class="ss">:posts</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+  <span class="n">t</span><span class="p">.</span><span class="nf">references</span> <span class="ss">:user</span><span class="p">,</span> <span class="ss">foreign_key: </span><span class="kp">true</span><span class="p">,</span> <span class="ss">null: </span><span class="kp">false</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>You should always index your assosciations. In <a href="https://tomafro.net/2009/08/using-indexes-in-rails-index-your-associations">this blog
+post</a>
+he saw a speed increase from 1.42 seconds on a simple query (like doing user.posts) to 0.01 just by adding an index on the assosciation.</p>
+:ET

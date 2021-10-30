@@ -1,0 +1,58 @@
+I"@<p>I’ve recently been reading <em>Refactoring: Ruby Edition</em> by Jay Fields, Martin
+Fowler, and Shane Harvie. All in all it’s a fantastic book and I’ve learned a
+lot from it, I’d definitely recommend it. However, there was one section that
+pretty much made me do this:</p>
+
+<p><img src="http://s3-ec.buzzfed.com/static/enhanced/terminal05/2012/8/10/14/anigif_enhanced-buzz-17859-1344624588-3.gif" alt="Nope Octopus" /></p>
+
+<p>That section was on Dynamic Method Definitions. Normally in Ruby, if you’d like
+to define a method you do it between a <code class="language-plaintext highlighter-rouge">def</code> and an <code class="language-plaintext highlighter-rouge">end</code>. However, there may be
+a situation in which you have many methods that all have a similar structure and
+it gets repetitive. For example, lets say we’ve got a kid that has some chores
+to do.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="k">def</span> <span class="nf">wash_dog</span>
+    <span class="n">clean</span><span class="p">(</span><span class="n">dog</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">wash_dishes</span>
+    <span class="n">clean</span><span class="p">(</span><span class="n">dishes</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">wash_car</span>
+    <span class="n">clean</span><span class="p">(</span><span class="n">car</span><span class="p">)</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p><br />
+Obviously this is a pretty contrived example, but stay with me. If we wanted to
+dynamically define these methods instead of doing each one individually we could
+instead do:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="p">[</span><span class="s2">"dog"</span><span class="p">,</span> <span class="s2">"dishes"</span><span class="p">,</span> <span class="s2">"car"</span><span class="p">].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="nb">method</span><span class="o">|</span>
+  <span class="n">define_method</span> <span class="s2">"wash_</span><span class="si">#{</span><span class="nb">method</span><span class="si">}</span><span class="s2">"</span> <span class="k">do</span>
+    <span class="n">clean</span><span class="p">(</span><span class="nb">method</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>There are a lot of benefits to this, it obviously reduces duplication in the
+code and as a result of that can also reduce the possibility for errors when
+compared to defining the methods individually.</p>
+
+<p>However, to me the benefits are not worth the huge downside of reducing
+readability and easy code navigation. Oftentimes when going throw a codebase we
+use some go-to tricks for finding where a method is defined when we need to know
+more about it. If I went into a codebase and saw the <code class="language-plaintext highlighter-rouge">wash_car</code> method and
+wanted to find it’s definition I would immediately search for <code class="language-plaintext highlighter-rouge">def wash_car</code>.
+When it didn’t come up I’d think, maybe it’s an instance variable with an
+attr_reader and search for that. Nope? Maybe it’s delegated from another object.
+Nope? Maybe it’s an alias. Nope? WHERE THE F*CK is it defined?</p>
+
+<p>I personally will always favor readibility over brevity. If there were 100 of
+these small chore methods then at that point it may be worth the trade-off, but
+with only a couple of them I don’t think Dynamic Method Definiton is worth it.
+Many people would disagree with me, it’s kind of like the
+argument of using a ternary vs an <code class="language-plaintext highlighter-rouge">if/else</code> for a short conditional. Some people
+think it’s awesome, some people think it’s <a href="http://www.sitepoint.com/ruby-golf/">Ruby
+Golf</a>. Either way, I’m sticking by my PSA.
+Friends Don’t Let Friends Use Dynamic Method Definition.</p>
+:ET

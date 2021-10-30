@@ -1,0 +1,4 @@
+I"Ö<p>There are a lot of ways that you can optimize performance in your queries by
+making sure to use SQL and ActiveRecord wherever possible instead of using ruby
+or rails methods to do what youâ€™re looking for.</p>
+:ET
