@@ -1,6 +1,6 @@
 ---
-layout: post
 title: Working with Gems Locally
+layout: post
 ---
 
 
@@ -26,7 +26,7 @@ Now, lets say you're particularly interested in digging into the source code.
 Of course,
 you can go to the gems page on GitHub and investigate the content there, but you
 can also do that locally.
-` bundle open [gem-name]` will open up your local copy of your gem in the editor
+`bundle open gem-name` will open up your local copy of your gem in the editor
 of  your choice. This is especially great if you're not up to date with the
 latest version. Investigating the source locally can be helpful to make sure
 you're seeing the code as it actually is when you run it, and not accidentally
@@ -48,6 +48,8 @@ gem 'my_local_gem', path: '/absolute/path/to/your/gem'
 ```
 
 Now, just bundle install again and you'll be using your local copy.
+Remember to restart your server after making any local gem changes to see the
+results.
 
 As another note, let's say you're testing changes to one gem, and you want to
 update to the newest version, however you don't want to re-bundle all of the
@@ -57,3 +59,4 @@ bundle update --conservative my_gem
 ```
 And this will only update the one gem directly, saving you a lot of time in the
 bundle.
+
