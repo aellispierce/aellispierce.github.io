@@ -1,6 +1,5 @@
 ---
 layout: post
-published: false
 ---
 
 Fridays are investment days at thoughtbot, so I decided to use the day to

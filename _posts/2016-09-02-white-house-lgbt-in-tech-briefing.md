@@ -1,7 +1,6 @@
 ---
 layout: post
 title: White House LGBT in Tech Briefing
-published: false
 ---
 
 Last week I had the privilege to attend the White House LGBT in Tech

@@ -1,7 +1,6 @@
 ---
 title: ClojureBridge
 layout: post
-published: false
 ---
 Last weekend I had the pleasure of going to ClojureBridge, a weekend "Intro to Clojure"
 course put on by Cognitect, the company that made Clojure, here in Durham.

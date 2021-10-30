@@ -1,12 +1,11 @@
 ---
 layout: post
-published: false
 ---
 
 At the last Triangle Ruby meetup the scheduled speaker had to cancel because of
 the flu and we were lucky enough to have Sandi Metz come speak as a "backup."
 She gave a fantastic talk on Grit that I hadn't seen before and it was amazing
-and inspiring. If you haven't seen this talk,
+and inspiring. If you haven't seen it,
 [here's a video](https://www.youtube.com/watch?v=oF3oViELrZw&noredirect=1) from
 when she's given the talk previously. I would definitely recommend watching
 it.

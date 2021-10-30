@@ -1,7 +1,6 @@
 ---
 title: Ruby DCamp
 layout: post
-published: false
 ---
 
 This past weekend I had the opportunity to go to Ruby DCamp for the first time and

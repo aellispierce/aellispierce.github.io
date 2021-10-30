@@ -1,6 +1,5 @@
 ---
 layout: post
-published: false
 ---
 
 I've been working as a professional developer for a little over 3 months now so I

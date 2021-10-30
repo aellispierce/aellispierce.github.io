@@ -1,6 +1,5 @@
 ---
 layout: post
-published: false
 ---
 
 When people talk about programming they make all kinds of wild comparisons.

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Two Months At thoughtbot
-published: false
 ---
 
 Last week was the end of the second month of my apprenticeship at thoughtbot!
